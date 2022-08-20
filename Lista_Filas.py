@@ -1,6 +1,6 @@
-from nodo import Nodo
+from Nodo import Nodo
 
-class ListaEnlazada():
+class ListaFilas:
     
     def __init__(self):
         self.primero = None
@@ -9,15 +9,6 @@ class ListaEnlazada():
         
     def vacia(self):
         return self.primero == None
-    
-    def agregar_final(self, dato):
-        if self.vacia():
-            self.primero = self.ultimo = Nodo(dato)
-        else:
-            aux = self.ultimo
-            self.ultimo = aux.siguiente = Nodo(dato)
-            self.ultimo.anterior = aux
-        self.size += 1
         
     def agregar_inicio(self, dato):
         if self.vacia():
@@ -27,6 +18,15 @@ class ListaEnlazada():
             aux.siguiente = self.primero
             self.primero.anterior = aux
             self.primero = aux
+        self.size += 1
+        
+    def agregar_final(self, dato):
+        if self.vacia():
+            self.primero = self.ultimo = Nodo(dato)
+        else:
+            aux = self.ultimo
+            self.ultimo = aux.siguiente = Nodo(dato)
+            self.ultimo.anterior = aux
         self.size += 1
         
     def eliminar_inicio(self):

@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
-from paciente import Paciente
-from lista_enlazada import ListaEnlazada
+from Paciente import Paciente
+from Lista_Pacientes import ListaEnlazada
 
 class Archivo():
     
