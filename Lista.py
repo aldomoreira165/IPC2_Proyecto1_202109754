@@ -1,6 +1,6 @@
 from Nodo import Nodo
 
-class ListaPacientes():
+class Lista():
     
     def __init__(self):
         self.primero = None

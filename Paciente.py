@@ -1,10 +1,10 @@
-from Lista_Matrices import ListaMatrices
+from Lista import Lista
 
 class Paciente:
     
-    def __init__(self, nombre, edad, casillas, periodos):
+    def __init__(self, nombre, edad, m):
         self.nombre = nombre
         self.edad = edad
-        self.casillas = casillas
-        self.periodos = periodos
-        self.listaMatrices = ListaMatrices()
+        self.m = m
+        #self.periodos = periodos
+        self.listaRegillasEnfermas = Lista()

@@ -19,31 +19,31 @@
     </paciente>
     <paciente>
         <datospersonales>
-            <nombre>Juan Rodríguez</nombre>
-            <edad>20</edad>
+            <nombre>Nacho</nombre>
+            <edad>15</edad>
         </datospersonales>
         <periodos>5</periodos>
         <m>10</m>
         <rejilla>
-            <celda f="1" c="1"/>
-            <celda f="1" c="2"/>
-            <celda f="2" c="1"/>
-            <celda f="2" c="2"/>
-            <celda f="6" c="6"/>
-            <celda f="6" c="7"/>
-            <celda f="7" c="6"/>
-            <celda f="7" c="7"/>
+            <celda f="2" c="8"/>
+            <celda f="1" c="9"/>
+            <celda f="2" c="10"/>
+            <celda f="2" c="11"/>
+            <celda f="6" c="12"/>
+            <celda f="6" c="13"/>
+            <celda f="7" c="14"/>
+            <celda f="7" c="15"/>
         </rejilla>
     </paciente>
     <paciente>
         <datospersonales>
-            <nombre>Jimena Arana</nombre>
-            <edad>25</edad>
+            <nombre>Juan</nombre>
+            <edad>15</edad>
         </datospersonales>
         <periodos>5</periodos>
         <m>10</m>
         <rejilla>
-            <celda f="1" c="1"/>
+            <celda f="3" c="1"/>
             <celda f="1" c="2"/>
             <celda f="2" c="1"/>
             <celda f="2" c="2"/>
