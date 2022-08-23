@@ -22,8 +22,8 @@
             <nombre>Nacho</nombre>
             <edad>15</edad>
         </datospersonales>
-        <periodos>5</periodos>
-        <m>10</m>
+        <periodos>56</periodos>
+        <m>15</m>
         <rejilla>
             <celda f="2" c="8"/>
             <celda f="1" c="9"/>
@@ -43,14 +43,14 @@
         <periodos>5</periodos>
         <m>10</m>
         <rejilla>
-            <celda f="3" c="1"/>
-            <celda f="1" c="2"/>
-            <celda f="2" c="1"/>
-            <celda f="2" c="2"/>
-            <celda f="6" c="6"/>
-            <celda f="6" c="7"/>
-            <celda f="7" c="6"/>
-            <celda f="7" c="7"/>
+            <celda f="3" c="16"/>
+            <celda f="1" c="17"/>
+            <celda f="2" c="18"/>
+            <celda f="2" c="19"/>
+            <celda f="6" c="20"/>
+            <celda f="6" c="21"/>
+            <celda f="7" c="22"/>
+            <celda f="7" c="23"/>
         </rejilla>
     </paciente>
 </pacientes>
