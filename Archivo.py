@@ -8,36 +8,39 @@ class Archivo():
     
     def __init__ (self, ruta_archivo):
         self.ruta_archivo = ruta_archivo
+        self.listaPacientes = None
     
-    lista_pacientes = Lista()
-    lista_posiciones_celulas_infectadas = Lista()
-
     #abriendo documento xml
-    try:
-        xml_file = open("./datos.xml", encoding="utf-8")
-        if xml_file.readable():
-            xml_data = ET.fromstring(xml_file.read())
-            contador = 0
-            
-            #obteniendo datos de paciente
-            for paciente in xml_data.findall('paciente'):
-                nombre = paciente.find('datospersonales/nombre').text
-                edad = int(paciente.find('datospersonales/edad'))
-                m = int(paciente.find('m').text)
-                periodos = int(paciente.find('periodos').text)
+    def agregarArchivo(self):
+        self.listaPacientes = Lista()
+        try:
+            xml_file = open(self.ruta_archivo, encoding="utf-8")
+            if xml_file.readable():
+                xml_data = ET.fromstring(xml_file.read())
+                contador = 0 #contador para asignar los datos de las celdas a cada paciente
+                #obteniendo datos de paciente
+                for paciente in xml_data.findall('paciente'):
+                    contadorPacientes =+ 1
+                    nombre = paciente.find('datospersonales/nombre').text
+                    edad = int(paciente.find('datospersonales/edad').text)
+                    m = int(paciente.find('m').text)
+                    periodos = int(paciente.find('periodos').text)
 
-                #obteniendo posicion de celdas contagiadas
-                for celda in xml_data[contador][3]:
-                    x = int(celda.get('c'))
-                    y = int(celda.get('f'))
-                    posicion = (m * y) + (x + 1)
-                    lista_posiciones_celulas_infectadas.agregar_final(posicion)
-                 
-                #agregando datos al constuctor del paciente        
-                item_paciente = Paciente(nombre, edad, m, periodos, lista_posiciones_celulas_infectadas)
-                lista_pacientes.agregar_final(item_paciente)
-                contador += 1
-    except Exception as err:
-        print("Error: ", err)
-    finally:
-        xml_file.close()
+                    #obteniendo posicion de celdas contagiadas
+                    listaRejillasEnfermas = Lista()
+                    for celda in xml_data[contador][3]:
+                        x = int(celda.get('c'))
+                        y = int(celda.get('f'))
+                        posicion = (m * y) + (x + 1)
+                        listaRejillasEnfermas.agregar_final(posicion)
+                    
+                    #agregando datos al constuctor del paciente        
+                    itemPaciente = Paciente(contador, nombre, edad, m, periodos, listaRejillasEnfermas)
+                    self.listaPacientes.agregar_final(itemPaciente)
+                    contador += 1
+        except Exception as err:
+            print("Error: ", err)
+        finally:
+            xml_file.close()
+          
+        self.listaPacientes.primero.siguiente.dato.listaRejillasEnfermas.recorrer_inicio()
