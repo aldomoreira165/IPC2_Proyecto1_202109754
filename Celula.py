@@ -14,24 +14,24 @@ class Celula:
         self.enferma = False
         
     def coordenadasCelulasVecinas(self):
-        x1 = self.x - 1
-        y1 = self.y - 1
-        x2 = self.x
-        y2 = self.y - 1 
-        x3 = self.x + 1
-        y3 = self.y - 1
-        x4 = self.x - 1
-        y4 = self.y
-        x5 = self.x + 1
-        y5 = self.y
-        x6 = self.x - 1
-        y6 = self.y + 1
-        x7 = self.x
-        y7 = self.y + 1
-        x8 = self.x + 1
-        y8 = self.y + 1
+            x1 = self.x - 1
+            y1 = self.y - 1
+            x2 = self.x
+            y2 = self.y - 1 
+            x3 = self.x + 1
+            y3 = self.y - 1
+            x4 = self.x - 1
+            y4 = self.y
+            x5 = self.x + 1
+            y5 = self.y
+            x6 = self.x - 1
+            y6 = self.y + 1
+            x7 = self.x
+            y7 = self.y + 1
+            x8 = self.x + 1
+            y8 = self.y + 1
         
     def obtenerPosicionCelula(self, x, y, m):
-        self.posicionCelula = (m * y) + (x + 1)
+        return (m * y) + (x + 1)
         
         

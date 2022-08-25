@@ -24,8 +24,9 @@ while True:
         ruta = input("Ingresa la ruta del archivo: ")
         archivo = Archivo(ruta)
         archivo.agregarArchivo()
-        #clearConsole()
+        clearConsole()
     if opcion == 2:
+        clearConsole()
         if archivo == None:
             print("No has cargado ningún archivo al sistema")
         else:
@@ -34,7 +35,27 @@ while True:
             for i in range(archivo.listaPacientes.sizeOfList()):
                 print(paciente.dato.numeroPaciente, paciente.dato.nombre)
                 paciente = paciente.siguiente
-            numeroPaciente = int(input("Selecciona un número de paciente: "))
+                
+            numero = int(input("Selecciona un número de paciente: "))
+            pacienteSeleccionado = archivo.listaPacientes.primero
+            #tomando datos de paciente seleccionado
+            m = None
+            listaRejillasEnfermas = None
+            for i in range(archivo.listaPacientes.sizeOfList()):
+                if (numero == pacienteSeleccionado.dato.numeroPaciente):
+                    nombre = pacienteSeleccionado.dato.nombre
+                    edad = pacienteSeleccionado.dato.edad
+                    m = pacienteSeleccionado.dato.m
+                    periodos = pacienteSeleccionado.dato.periodos
+                    listaRejillasEnfermas = pacienteSeleccionado.dato.listaRejillasEnfermas
+                    #print(nombre, edad, m, periodos)
+                    break
+                else:
+                    pacienteSeleccionado = pacienteSeleccionado.siguiente
+            tejido = Tejido(m, listaRejillasEnfermas)
+            tejido.generarTejido()
+            tejido.imprimirTejido()
+                    
     if opcion == 3:
         tej = Tejido(10)
         tej.generarMuestraInicial()

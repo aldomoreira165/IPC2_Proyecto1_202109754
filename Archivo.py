@@ -1,5 +1,3 @@
-from platform import python_branch
-from turtle import pos
 import xml.etree.ElementTree as ET
 from Paciente import Paciente
 from Lista import Lista
@@ -25,7 +23,7 @@ class Archivo():
                     edad = int(paciente.find('datospersonales/edad').text)
                     m = int(paciente.find('m').text)
                     periodos = int(paciente.find('periodos').text)
-
+                    
                     #obteniendo posicion de celdas contagiadas
                     listaRejillasEnfermas = Lista()
                     for celda in xml_data[contador][3]:
@@ -33,6 +31,9 @@ class Archivo():
                         y = int(celda.get('f'))
                         posicion = (m * y) + (x + 1)
                         listaRejillasEnfermas.agregar_final(posicion)
+                        
+                    for i in range(10000):
+                        listaRejillasEnfermas.agregar_final(None)
                     
                     #agregando datos al constuctor del paciente        
                     itemPaciente = Paciente(contador, nombre, edad, m, periodos, listaRejillasEnfermas)
@@ -42,5 +43,3 @@ class Archivo():
             print("Error: ", err)
         finally:
             xml_file.close()
-          
-        self.listaPacientes.primero.siguiente.dato.listaRejillasEnfermas.recorrer_inicio()

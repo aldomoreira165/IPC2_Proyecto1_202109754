@@ -8,4 +8,4 @@ class Paciente:
         self.edad = edad
         self.m = m
         self.periodos = periodos
-        self.listaRejillasEnfermas = listaRejillasEnfermas
+        self.listaRejillasEnfermas = listaRejillasEnfermas 

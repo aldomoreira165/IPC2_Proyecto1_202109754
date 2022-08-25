@@ -65,3 +65,6 @@ class Lista():
             
     def sizeOfList(self):
         return self.size
+    
+    def obtenerValor(self):
+        return self.primero
