@@ -13,7 +13,7 @@ def clearConsole():
     
 while True:
     print("**************************")
-    print("*¡Bienvenido!             *")
+    print("*¡Bienvenido!            *")
     print("*1. Seleccionar archivo  *")
     print("*2. Seleccionar paciente *")
     print("*3. Salir                *")
@@ -40,6 +40,7 @@ while True:
             pacienteSeleccionado = archivo.listaPacientes.primero
             #tomando datos de paciente seleccionado
             m = None
+            periodos = None
             listaRejillasEnfermas = None
             for i in range(archivo.listaPacientes.sizeOfList()):
                 if (numero == pacienteSeleccionado.dato.numeroPaciente):
@@ -54,9 +55,9 @@ while True:
                     pacienteSeleccionado = pacienteSeleccionado.siguiente
             tejido = Tejido(m, listaRejillasEnfermas)
             tejido.generarTejido()
-            tejido.imprimirTejido()
+            tejido.contagioTejido(periodos)
                     
     if opcion == 3:
-        tej = Tejido(10)
+        tej = Tejido(4)
         tej.generarMuestraInicial()
             
