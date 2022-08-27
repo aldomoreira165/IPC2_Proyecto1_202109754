@@ -40,6 +40,7 @@ while True:
             pacienteSeleccionado = archivo.listaPacientes.primero
             #tomando datos de paciente seleccionado
             m = None
+            periodos = None
             listaRejillasEnfermas = None
             for i in range(archivo.listaPacientes.sizeOfList()):
                 if (numero == pacienteSeleccionado.dato.numeroPaciente):
@@ -54,14 +55,9 @@ while True:
                     pacienteSeleccionado = pacienteSeleccionado.siguiente
             tejido = Tejido(m, listaRejillasEnfermas)
             tejido.generarTejido()
-            print("*****antes*****")
-            tejido.imprimirTejido()
-            tejido.contagioTejido(1)
-            print("")
-            print("*****después*****")
-            tejido.imprimirTejido()
+            tejido.contagioTejido(periodos)
                     
     if opcion == 3:
-        tej = Tejido(10)
+        tej = Tejido(4)
         tej.generarMuestraInicial()
             
