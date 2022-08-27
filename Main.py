@@ -54,8 +54,12 @@ while True:
                     pacienteSeleccionado = pacienteSeleccionado.siguiente
             tejido = Tejido(m, listaRejillasEnfermas)
             tejido.generarTejido()
+            print("*****antes*****")
             tejido.imprimirTejido()
-            tejido.contagioTejido()
+            tejido.contagioTejido(1)
+            print("")
+            print("*****después*****")
+            tejido.imprimirTejido()
                     
     if opcion == 3:
         tej = Tejido(10)
