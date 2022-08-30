@@ -26,13 +26,13 @@
             <edad>15</edad>
         </datospersonales>
         <periodos>56</periodos>
-        <m>15</m>
+        <m>10</m>
         <rejilla>
+            <celda f="3" c="8"/>
+            <celda f="4" c="8"/>
             <celda f="1" c="8"/>
-            <celda f="3" c="9"/>
-            <celda f="8" c="10"/>
-            <celda f="10" c="11"/>
-            <celda f="13" c="12"/>
+            <celda f="0" c="8"/>
+            <celda f="0" c="9"/>
         </rejilla>
     </paciente>
     <paciente>

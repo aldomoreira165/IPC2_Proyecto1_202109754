@@ -12,22 +12,43 @@ class Tejido:
         self.listaRejillasEnfermas = listaRejillasEnfermas
         self.tejido = None
         self.tejidoSize = None
+        self.listaMatrices = None
+        self.tipoEnfermedad = None
 
         self.tejido = Lista()
+        self.listaMatrices = Lista()
         
+    def ordenarLista(self):
+        for i in range(self.listaRejillasEnfermas.sizeOfList()):
+            actual = self.listaRejillasEnfermas.primero
+            sig = actual.siguiente
+            for j in range(self.listaRejillasEnfermas.sizeOfList() - 1):
+                if actual.dato > sig.dato:
+                    aux = actual.dato
+                    actual.dato = sig.dato
+                    sig.dato = aux
+                actual = sig
+                sig = actual.siguiente
+                
+                
+        
+         
     def generarTejido(self):
+        self.ordenarLista()
         celulaEnferma = self.listaRejillasEnfermas.primero
         self.tejidoSize = 0
         for y in range(self.m):
             for x in range(self.m):
                 self.tejidoSize += 1
-                if self.tejidoSize == celulaEnferma.dato and celulaEnferma.dato != None:
+                if self.tejidoSize == celulaEnferma.dato:
                     celula = Celula(True, x, y, self.tejidoSize)
                     self.tejido.agregar_final(celula)
-                    celulaEnferma = celulaEnferma.siguiente
+                    if celulaEnferma.siguiente != None:
+                        celulaEnferma = celulaEnferma.siguiente
                 else:
                     celula = Celula(False, x, y, self.tejidoSize)
                     self.tejido.agregar_final(celula)
+                    
                     
     def borrarTejido(self):
         for i in range(self.tejido.sizeOfList()):
@@ -56,7 +77,7 @@ class Tejido:
         periodo = 0        
         print("*****PATRON INICIAL*****")
         self.imprimirTejido()
-        sleep(3)
+        sleep(5)
         self.clearConsole()
         for repeticion in range(periodos):
             periodo += 1
@@ -475,9 +496,17 @@ class Tejido:
                 tejidoNuevo = tejidoNuevo.siguiente
                 tejidoAnterior = tejidoAnterior.siguiente
             
+            self.listaMatrices.agregar_final(self.tejido)
+            
             print("*********PERIODO:", periodo, "*********")
             self.imprimirTejido()
             print("*****************************")
-            sleep(10)
+            sleep(5)
             self.clearConsole()
+            
+    """def analizarTejidos(self):
+        for i in range(self.listaMatrices.sizeOfList()):
+            for f in range(self.m):
+                for c in range(self.m):"""
+                    
             

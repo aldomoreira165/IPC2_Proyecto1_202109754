@@ -56,6 +56,7 @@ while True:
             tejido = Tejido(m, listaRejillasEnfermas)
             tejido.generarTejido()
             tejido.contagioTejido(periodos)
+            #tejido.analizarTejidos()
                     
     if opcion == 3:
         tej = Tejido(4)
