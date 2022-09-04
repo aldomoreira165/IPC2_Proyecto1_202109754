@@ -1,6 +1,7 @@
 import os
 from Archivo import Archivo
 from Tejido import Tejido
+import pathlib
 
 archivo = None
 
@@ -56,9 +57,10 @@ while True:
             tejido = Tejido(m, listaRejillasEnfermas)
             tejido.generarTejido()
             tejido.contagioTejido(periodos)
-            #tejido.analizarTejidos()
+            tipo, n, n1 = tejido.analizarTejidos()
+            tejido.generadorXML(nombre, edad, periodos, m, tipo, n, n1)
                     
     if opcion == 3:
-        tej = Tejido(4)
-        tej.generarMuestraInicial()
+        print("Has salido del sistema.")
+        exit()
             

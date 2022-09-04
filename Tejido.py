@@ -3,6 +3,9 @@ from time import sleep
 from Celula import Celula
 from Lista import Lista
 from colorama import Fore, init
+import xml.etree.cElementTree as ET
+import pathlib
+
 init(autoreset=True)
 
 class Tejido:
@@ -16,7 +19,7 @@ class Tejido:
         self.tipoEnfermedad = None
 
         self.tejido = Lista()
-        self.listaMatrices = Lista()
+        self.listaMatrices = []
         
     def ordenarLista(self):
         for i in range(self.listaRejillasEnfermas.sizeOfList()):
@@ -30,31 +33,27 @@ class Tejido:
                 actual = sig
                 sig = actual.siguiente
                 
-                
-        
-         
     def generarTejido(self):
         self.ordenarLista()
-        celulaEnferma = self.listaRejillasEnfermas.primero
         self.tejidoSize = 0
+        lista = []
+        celulaEnferma = self.listaRejillasEnfermas.primero
         for y in range(self.m):
             for x in range(self.m):
                 self.tejidoSize += 1
                 if self.tejidoSize == celulaEnferma.dato:
                     celula = Celula(True, x, y, self.tejidoSize)
                     self.tejido.agregar_final(celula)
+                    lista.append(str(self.tejidoSize))
                     if celulaEnferma.siguiente != None:
                         celulaEnferma = celulaEnferma.siguiente
                 else:
                     celula = Celula(False, x, y, self.tejidoSize)
                     self.tejido.agregar_final(celula)
-                    
-                    
-    def borrarTejido(self):
-        for i in range(self.tejido.sizeOfList()):
-            self.tejido.eliminar_inicio()
+        #guardando la matriz inicial
+        lista = "".join(lista) 
+        self.listaMatrices.append(lista)
             
-
     def imprimirTejido(self):
         tejido = self.tejido.primero
         for y in range(self.m):
@@ -77,9 +76,10 @@ class Tejido:
         periodo = 0        
         print("*****PATRON INICIAL*****")
         self.imprimirTejido()
-        sleep(5)
+        sleep(2)
         self.clearConsole()
         for repeticion in range(periodos):
+            lista = []
             periodo += 1
             listaNuevaTejido = Lista()       
             celulaActual = self.tejido.primero
@@ -113,11 +113,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -153,11 +155,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -199,11 +203,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -239,11 +245,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -279,11 +287,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -325,11 +335,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -371,11 +383,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -417,11 +431,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -471,11 +487,13 @@ class Tejido:
                         if celulaActual.dato.enferma == True:
                             if contador == 2 or contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         else:
                             if contador == 3:
                                 enferma = True
+                                lista.append(str(celulaActual.dato.posicion))
                             else:
                                 enferma = False
                         xc = celulaActual.dato.x
@@ -495,18 +513,84 @@ class Tejido:
                 tejidoAnterior.dato.posicion = tejidoNuevo.dato.posicion
                 tejidoNuevo = tejidoNuevo.siguiente
                 tejidoAnterior = tejidoAnterior.siguiente
+                
+            lista = "".join(lista) 
+            self.listaMatrices.append(lista)
             
-            self.listaMatrices.agregar_final(self.tejido)
-            
+            #mostrando los periodos
             print("*********PERIODO:", periodo, "*********")
             self.imprimirTejido()
             print("*****************************")
-            sleep(5)
+            sleep(2)
             self.clearConsole()
             
-    """def analizarTejidos(self):
-        for i in range(self.listaMatrices.sizeOfList()):
-            for f in range(self.m):
-                for c in range(self.m):"""
+    def analizarTejidos(self):
+        size = len(self.listaMatrices)
+        tipo = None
+        n = None
+        n1 = None
+        igualesMuestraIniciaL = []
+        igualesOtroPatron = []
+        
+        for i in range(size):
+            if i > 0 and self.listaMatrices[i] == self.listaMatrices[0]:
+                igualesMuestraIniciaL.append(i)
+                
+        for i in range(size):
+            if i > 0:
+                contador = 0
+                actual = self.listaMatrices[i]
+                for j in range(i+1, size):
+                    if actual == self.listaMatrices[j] and contador == 0:
+                        igualesOtroPatron.append(i)
+                        contador += 1
+                    
+        #verificando tejidos
+        if len(igualesMuestraIniciaL) >= 1:
+            if igualesMuestraIniciaL[0] == 1:
+                tipo = "Mortal"
+            else: 
+                tipo = "Grave"
+        elif len(igualesOtroPatron) >= 2:
+            if igualesOtroPatron[1] - igualesOtroPatron[0] == 1:
+                tipo = "Mortal"
+            else:
+                tipo = "Grave"
+        else:
+            tipo = "Leve"
+        
+        if len(igualesMuestraIniciaL) == 0:
+            n = "No se repite el patron inicial"
+        else:
+            n = igualesMuestraIniciaL[0]
+            
+        if len(igualesOtroPatron) == 0:
+            n1 = "No se repite ningun patron diferente al inicial"
+        else:
+            n1 = igualesOtroPatron[0]
+            
+        return tipo, n, n1
+              
+    def generadorXML(self, nombre, edad, periodos, m, resultado, n, n1):
+        pacientes = ET.Element("pacientes")
+        paciente = ET.SubElement(pacientes, "paciente")
+        datosPersonales = ET.SubElement(paciente, "datospersonales")
+        ET.SubElement(datosPersonales, "nombre").text = nombre
+        ET.SubElement(datosPersonales, "edad").text = str(edad)
+        ET.SubElement(paciente, "periodos").text = str(periodos)
+        ET.SubElement(paciente, "m").text = str(m)
+        ET.SubElement(paciente, "resultado").text = str(resultado)
+        ET.SubElement(paciente, "n").text = str(n)
+        ET.SubElement(paciente, "n1").text = str(n1) 
+        archivo = ET.ElementTree(pacientes)
+        archivo.write(f" Resultados de paciente {nombre}.xml")
+    
+    
+            
+    
+        
+                    
+                    
+                    
                     
             
