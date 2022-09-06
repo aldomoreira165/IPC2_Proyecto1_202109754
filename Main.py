@@ -1,7 +1,6 @@
 import os
 from Archivo import Archivo
 from Tejido import Tejido
-import pathlib
 
 archivo = None
 
