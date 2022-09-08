@@ -1,10 +1,11 @@
 import os
+import queue
 from time import sleep
 from Celula import Celula
 from Lista import Lista
 from colorama import Fore, init
-import xml.etree.cElementTree as ET
-import pathlib
+import xml.etree.ElementTree as ET
+from xml.dom import minidom
 
 init(autoreset=True)
 
@@ -570,6 +571,19 @@ class Tejido:
             n1 = igualesOtroPatron[0]
             
         return tipo, n, n1
+    
+    def prettify(self, element, indent='  '):
+        queue = [(0, element)]  # (level, element)
+        while queue:
+            level, element = queue.pop(0)
+            children = [(level + 1, child) for child in list(element)]
+            if children:
+                element.text = '\n' + indent * (level+1)  # for child open
+            if queue:
+                element.tail = '\n' + indent * queue[0][0]  # for sibling open
+            else:
+                element.tail = '\n' + indent * (level-1)  # for parent close
+            queue[0:0] = children  # prepend so children come before siblings
               
     def generadorXML(self, nombre, edad, periodos, m, resultado, n, n1):
         pacientes = ET.Element("pacientes")
@@ -582,8 +596,9 @@ class Tejido:
         ET.SubElement(paciente, "resultado").text = str(resultado)
         ET.SubElement(paciente, "n").text = str(n)
         ET.SubElement(paciente, "n1").text = str(n1) 
+        self.prettify(pacientes)
         archivo = ET.ElementTree(pacientes)
-        archivo.write(f" Resultados de paciente {nombre}.xml")
+        archivo.write(f"Resultados de paciente {nombre}.xml", encoding="UTF-8", xml_declaration=True)
     
     
             
